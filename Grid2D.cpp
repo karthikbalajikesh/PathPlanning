@@ -1,5 +1,8 @@
 #include "Grid2D.h"
 
+typedef pair<double,double> pd;
+
+
 // first is the default constructor
 Grid2D::Grid2D() {
 	// The function should create a 2D vector of graph Nodes.
@@ -17,6 +20,8 @@ Grid2D::Grid2D() {
 		}
 	}
 	DiscretizedGrid = temp;
+	Vehicle_size_x = 20;
+	Vehicle_size_z = 20;
 
 }
 
@@ -39,9 +44,63 @@ Grid2D::Grid2D(int xmax, int zmax, int cellWidth, int cellHeight) {
 		}
 	}
 	DiscretizedGrid = temp;
+	Vehicle_size_x = 20; // in cm
+	Vehicle_size_z = 20;
+
 }
 
 void Grid2D::ViewNodeDetails(int z_index, int x_index) {
 	
 	DiscretizedGrid[z_index][x_index].getCellParam();
+}
+
+void Grid2D::UpdateObstacles(vector<pd>& coordinates) {
+	// we assume the coordinates vector is sorted acoording to our need.
+	// we will go through the entire 2Dgrid and assign values
+	// when a value is assigned, we will also have to inflate the cell 
+	// to the size of the car.
+
+	// coordinates must be z first and then x.
+	int cood_ind = 0;  // current coordinate index
+	for (int z_index = 0; z_index < DiscretizedGrid.size(); z_index++) {
+		for (int x_index = 0; x_index < DiscretizedGrid[z_index].size(); x_index++) {
+			// we will check if the coordinate is present in the current cell
+			if (DiscretizedGrid[z_index][x_index].checkPresence(coordinates[cood_ind])) {
+				cood_ind++;
+				DiscretizedGrid[z_index][x_index].setObstacle();
+				InflateObstacle(z_index, x_index);
+				while (1) {
+					// skid through other vertices in this  
+					if (cood_ind < coordinates.size()) {
+						if (DiscretizedGrid[z_index][x_index].checkPresence(coordinates[cood_ind])) {
+							cood_ind++;
+						}
+						else {
+							break;
+						}
+					}
+					else {
+						return;
+					}
+					
+				}
+			}
+		}
+
+	}
+
+}
+
+void Grid2D::InflateObstacle(int z_index, int x_index) {
+	// we must make a circle of radius 20cm, i.e 2 grid
+	int padding_z = Vehicle_size_z/DiscretizedGrid[z_index][x_index].getWidthHeight().second;
+	int padding_x = Vehicle_size_x/DiscretizedGrid[z_index][x_index].getWidthHeight().first;
+
+	for (int z = z_index - padding_z; z <= z_index + padding_z;z++) {
+		for (int x = x_index - padding_x; x <= x_index + padding_x;x++) {
+			if ((x >= 0 && x < DiscretizedGrid[z_index].size()) && (z >= 0 && z < DiscretizedGrid.size())) {
+				DiscretizedGrid[z][x].setObstacle();
+			}
+		}
+	}
 }

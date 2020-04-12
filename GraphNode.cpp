@@ -1,5 +1,6 @@
 #include "GraphNode.h"
 #include<iostream>
+using std::pair;
 #pragma once
 // default constructor
 GraphNode::GraphNode():cellWidth(10),cellHeight(10),xcood(0.0),zcood(0.0),isObstacle(false),withinLane(true) {}
@@ -32,11 +33,17 @@ void GraphNode::setObstacle() {
 	isObstacle = true;
 }
 
-bool GraphNode::checkPresence(double x, double z) {
-	double x_low = xcood - (((double)cellWidth) / 2);
-	double z_low = zcood - (((double)cellHeight) / 2);
-	double x_high = xcood + (((double)cellWidth) / 2);
-	double z_high = zcood + (((double)cellHeight) / 2);
+pair<int, int> GraphNode::getWidthHeight() {
+	return (std::make_pair(cellWidth, cellHeight));
+}
+
+bool GraphNode::checkPresence(pair<double,double>& Coordinate) {
+	double x = Coordinate.second;
+	double z = Coordinate.first;
+	double x_low = xcood - (((double)cellWidth) / 200);
+	double z_low = zcood - (((double)cellHeight) / 200);
+	double x_high = xcood + (((double)cellWidth) / 200);
+	double z_high = zcood + (((double)cellHeight) / 200);
 
 	// check if in bounds in both x and y
 	if ((x > x_low && x <= x_high) && (z > z_low && z <= z_high)) {

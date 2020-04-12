@@ -1,4 +1,9 @@
 #pragma once
+
+#include<iostream>
+#include<utility>
+using namespace std;
+
 class GraphNode
 {
 	int cellWidth, cellHeight; // is 10 cm * 10cm at this point.
@@ -17,7 +22,9 @@ public:
 	// tochange into obstacle
 	void setObstacle();
 	// check if a point is present in the cell;
-	bool checkPresence(double, double);
+	bool checkPresence(pair<double,double>&);
+
+	pair<int, int> getWidthHeight(); // returns width and height of cell in cm
 
 };
 

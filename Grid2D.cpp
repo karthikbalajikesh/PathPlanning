@@ -27,7 +27,7 @@ Grid2D::Grid2D() {
 
 }
 
-Grid2D::Grid2D(int xmax, int zmax, int cellWidth, int cellHeight) {
+Grid2D::Grid2D(int xmax, int zmax, int cellWidth, int cellHeight, vector<pd> coordinates) {
 	// xmax in meters 
 	// zmax in meters
 	// cellWidth and cellHeight in cm
@@ -50,6 +50,8 @@ Grid2D::Grid2D(int xmax, int zmax, int cellWidth, int cellHeight) {
 	Vehicle_size_z = 20;
 	vector<Obstacle> temp1;
 	ObstacleList = temp1;
+	UpdateObstacles(coordinates);
+	
 
 }
 

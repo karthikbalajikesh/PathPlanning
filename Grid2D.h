@@ -19,7 +19,7 @@ public:
 	// default constructor
 	Grid2D();
 	// constructor with x and y fov and mesh size
-	Grid2D(int xmax, int zmax, int cellWidth=10, int cellHeight=10);
+	Grid2D(int xmax, int zmax, int cellWidth = 10, int cellHeight = 10, vector<pair<double, double>> coordinates = {});
 	//One method to update obstacle from a list or heap into the grid
 	void UpdateObstacles(vector<pair<double,double>>&, int i); // assume sorted list
 	void UpdateObstacles(vector<pair<double, double>>&); // non sorted list

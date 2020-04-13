@@ -5,6 +5,9 @@ class Graph
 {
 public:
 	vector<vector<GraphNode>> Adjacency_list;
+	
+	// Default Constructor
+	Graph();
 
 };
 

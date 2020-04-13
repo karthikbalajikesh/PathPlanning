@@ -3,11 +3,21 @@
 using std::pair;
 #pragma once
 // default constructor
-GraphNode::GraphNode():cellWidth(10),cellHeight(10),xcood(0.0),zcood(0.0),isObstacle(false),withinLane(true) {}
+GraphNode::GraphNode():cellWidth(10),cellHeight(10),xcood(0.0),zcood(0.0),isObstacle(false),withinLane(true) {
+	xlow = xcood - ((double)cellWidth / 200);
+	xhigh = xcood + ((double)cellWidth / 200);
+	zlow = zcood - ((double)cellHeight / 200);
+	zhigh = zcood - ((double)cellHeight / 200);
+}
 
 // xcood zcood constructor
-GraphNode::GraphNode(double x,double z, int w, int h):cellWidth(w), cellHeight(h), xcood(x), 
-											zcood(z), isObstacle(false), withinLane(true) {}
+GraphNode::GraphNode(double x, double z, int w, int h) : cellWidth(w), cellHeight(h), xcood(x),
+zcood(z), isObstacle(false), withinLane(true) {
+	xlow = xcood - ((double)cellWidth / 200);
+	xhigh = xcood + ((double)cellWidth / 200);
+	zlow = zcood - ((double)cellHeight / 200);
+	zhigh = zcood - ((double)cellHeight / 200);
+}
 
 
 void GraphNode::getCellParam() {
@@ -40,13 +50,10 @@ pair<int, int> GraphNode::getWidthHeight() {
 bool GraphNode::checkPresence(pair<double,double>& Coordinate) {
 	double x = Coordinate.second;
 	double z = Coordinate.first;
-	double x_low = xcood - (((double)cellWidth) / 200);
-	double z_low = zcood - (((double)cellHeight) / 200);
-	double x_high = xcood + (((double)cellWidth) / 200);
-	double z_high = zcood + (((double)cellHeight) / 200);
+	
 
 	// check if in bounds in both x and y
-	if ((x > x_low && x <= x_high) && (z > z_low && z <= z_high)) {
+	if ((x >= xlow && x <= xhigh) && (z >= zlow && z <= zhigh)) {
 		return true;
 	}
 	else {

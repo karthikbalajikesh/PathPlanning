@@ -9,6 +9,7 @@ class GraphNode
 	int cellWidth, cellHeight; // is 10 cm * 10cm at this point.
 public:
 	// Node should contain the centroid coordinates
+	double xlow, xhigh, zlow, zhigh;
 	double xcood, zcood;
 	bool isObstacle;
 	bool withinLane;

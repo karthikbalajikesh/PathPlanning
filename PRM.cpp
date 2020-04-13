@@ -1,6 +1,20 @@
+#include<cstdlib>
+#include<time.h>
 #include "PRM.h"
 
-PRM::PRM(int zmax, int xmax, int cellWidth, int cellHeight, int radius, int neighbours, cood_vector coordinates) {
+PRM::PRM(int numIterations, int zmax, int xmax, int cellWidth, int cellHeight,  int neighbours, cood_vector coordinates):
+	occupancy_grid(xmax, zmax, cellWidth, cellHeight, coordinates), network() {
+	// extract the size of the occupancy grid
+	int z_numNodes = occupancy_grid.DiscretizedGrid.size();
+	int x_numNodes = occupancy_grid.DiscretizedGrid[0].size();
+
+	
+	GraphNode current;
+	// repeat n times
+	for (int iteration = 0; iteration < numIterations; iteration++) {
+		current = getRandomNode(z_numNodes, x_numNodes);
+	}
+
 	
 }
 
@@ -51,4 +65,12 @@ bool PRM::checkDistanceMetric(double& A, double& B, double& C, Obstacle& square)
 double PRM::normDistance(double& A, double& B, double& C, double& z, double& x) {
 	// return the norm distance without the denominator
 	return ((A*z)-(B*x)+(C));
+}
+
+// Function to pick random Node
+GraphNode PRM::getRandomNode(int& z_numNodes, int& x_numNodes) {
+	srand(time(0));
+	int z_index = rand() % z_numNodes;
+	int x_index = rand() % x_numNodes;
+	return occupancy_grid.DiscretizedGrid[z_index][x_index];
 }

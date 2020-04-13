@@ -1,6 +1,7 @@
 #include "Grid2D.h"
-
+#include<chrono>
 typedef pair<double,double> pd;
+using namespace std::chrono;
 
 
 // first is the default constructor
@@ -8,6 +9,9 @@ Grid2D::Grid2D() {
 	// The function should create a 2D vector of graph Nodes.
 	// The size of the graph nodesis currently a 2x3m grid
 	// The size of each cell is 10cm. Hence we will require a 30x20 grid (y*x)
+	
+
+
 	vector<vector<GraphNode>> temp(30);
 	double z_cood = -0.05, x_cood = 0; // -0.05 as the first element will become 0.5 in the for loop
 	for (int z_index = 0; z_index < 30;z_index++) {
@@ -24,7 +28,7 @@ Grid2D::Grid2D() {
 	Vehicle_size_z = 20;
 	vector<Obstacle> temp1;
 	ObstacleList = temp1;
-
+	
 }
 
 Grid2D::Grid2D(int xmax, int zmax, int cellWidth, int cellHeight, vector<pd> coordinates) {
@@ -32,6 +36,7 @@ Grid2D::Grid2D(int xmax, int zmax, int cellWidth, int cellHeight, vector<pd> coo
 	// zmax in meters
 	// cellWidth and cellHeight in cm
 	// check default constructor for more details
+	
 	double z_cood = -(double)cellHeight/200;
 	double x_cood = -(double)cellWidth / 200;
 	int num_z = (int)((double)zmax / ((double)cellHeight/100));  // number of cells in z

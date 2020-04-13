@@ -10,7 +10,7 @@ public:
 			xmin = (CurrentNode.xlow < xmin) ? CurrentNode.xlow:xmin;
 			xmax = (CurrentNode.xhigh > xmax) ? CurrentNode.xhigh : xmax;
 			zmin = (CurrentNode.zlow < zmin) ? CurrentNode.zlow : zmin;
-			zmax = (CurrentNode.zhigh < zmax) ? CurrentNode.zhigh : zmax;
+			zmax = (CurrentNode.zhigh > zmax) ? CurrentNode.zhigh : zmax;
 
 			// The four end points are (zmin,xmin),(zmin,xmax),(zmax,xmax),(zmax,xmin)
 	}

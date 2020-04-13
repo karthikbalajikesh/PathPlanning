@@ -1,10 +1,9 @@
 #include "Graph.h"
 
-Graph::Graph() {
+Graph::Graph():Adjacency_list() {
 	// Initialize an empty adjacency list 
 	// later maybe can use a heap
-	vector<vector<GraphNode>> temp;
-	Adjacency_list = temp;
+	
 }
 
 

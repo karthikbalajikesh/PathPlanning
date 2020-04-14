@@ -13,7 +13,10 @@ PRM::PRM(int numIterations, int zmax, int xmax, int cellWidth, int cellHeight,  
 	int x_numNodes = occupancy_grid.DiscretizedGrid[0].size();
 	Queue distance_Heap;
 	bool collision;
-	GraphNode* current;
+	GraphNode* current = &occupancy_grid.DiscretizedGrid[0][occupancy_grid.X_num_nodes/2];
+	// add the origin into the graph as we will always plan from the origin.
+	
+	network.AddVertex(*current);
 	vector<pid> Connectivity_vector(neighbours);
 	srand(time(0));
 	// repeat n times

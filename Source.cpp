@@ -20,7 +20,6 @@ int main() {
 	Coordinates.push_back(mp(0,0));
 	Coordinates.push_back(mp(2.05, 0.05));
 	PRM map1(100, 3, 2, 1, 1, 2, Coordinates);
-	
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop - start);
 	cout << duration.count();

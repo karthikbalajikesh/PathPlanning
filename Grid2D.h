@@ -16,6 +16,7 @@ public:
 	vector<vector<GraphNode>> DiscretizedGrid;
 	vector<Obstacle> ObstacleList;
 	int Vehicle_size_z, Vehicle_size_x;
+	int X_num_nodes;
 	// default constructor
 	Grid2D();
 	// constructor with x and y fov and mesh size

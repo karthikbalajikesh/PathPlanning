@@ -41,6 +41,7 @@ Grid2D::Grid2D(int xmax, int zmax, int cellWidth, int cellHeight, vector<pd> coo
 	double x_cood = -(double)cellWidth / 200;
 	int num_z = (int)((double)zmax / ((double)cellHeight/100));  // number of cells in z
 	int num_x = (int)((double)xmax / ((double)cellWidth/100));   // number of cells in x
+	X_num_nodes = num_x;
 	vector<vector<GraphNode>> temp(num_z);
 	for (int z_index = 0; z_index < num_z;z_index++) {
 		x_cood = (-(double)cellWidth / 200) - ((double)xmax / 2);  // to shift the axis from -xmax/2 to xmax/2

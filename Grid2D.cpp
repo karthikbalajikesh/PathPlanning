@@ -47,7 +47,7 @@ Grid2D::Grid2D(int xmax, int zmax, int cellWidth, int cellHeight, vector<pd> coo
 		z_cood += ((double)(cellHeight) / 100); // convert to meters 
 		for (int x_index = 0; x_index < num_x;x_index++) {
 			x_cood += ((double)cellWidth / 100);
-			temp[z_index].push_back(GraphNode(x_cood, z_cood));
+			temp[z_index].push_back(GraphNode(x_cood, z_cood,cellWidth,cellHeight));
 		}
 	}
 	DiscretizedGrid = temp;

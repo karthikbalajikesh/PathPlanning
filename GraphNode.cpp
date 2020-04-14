@@ -63,3 +63,13 @@ bool GraphNode::checkPresence(pair<double,double>& Coordinate) {
 }
 
 // maybe include check presence x and z 
+
+// function to return true if obstacle and flase if not
+bool GraphNode::is_Obstacle() {
+	if (isObstacle) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

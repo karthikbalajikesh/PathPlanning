@@ -24,6 +24,8 @@ public:
 	void setObstacle();
 	// check if a point is present in the cell;
 	bool checkPresence(pair<double,double>&);
+	// A bool to check if the node is an obstacle or not
+	bool is_Obstacle();
 
 	pair<int, int> getWidthHeight(); // returns width and height of cell in cm
 

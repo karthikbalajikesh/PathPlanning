@@ -3,9 +3,6 @@
 #include<math.h>
 #include "PRM.h"
 
-
-
-
 PRM::PRM(int numIterations, int zmax, int xmax, int cellWidth, int cellHeight,  int neighbours, cood_vector coordinates):
 	occupancy_grid(xmax, zmax, cellWidth, cellHeight, coordinates), network() {
 	// extract the size of the occupancy grid

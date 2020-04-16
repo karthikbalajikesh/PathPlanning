@@ -9,8 +9,6 @@ Grid2D::Grid2D() {
 	// The function should create a 2D vector of graph Nodes.
 	// The size of the graph nodesis currently a 2x3m grid
 	// The size of each cell is 10cm. Hence we will require a 30x20 grid (y*x)
-	
-
 
 	vector<vector<GraphNode>> temp(30);
 	double z_cood = -0.05, x_cood = 0; // -0.05 as the first element will become 0.5 in the for loop

@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<chrono>
+#include"DijkstraPRM.h"
 #include"Dijkstra.h"
 using namespace std::chrono;
 using namespace std;
@@ -18,8 +19,8 @@ int main() {
 	//Coordinates.push_back(mp(0.375, 0.4));
 	//Coordinates.push_back(mp(1.1, 0.6));
 	//Coordinates.push_back(mp(2.05, 0.05));
-	pair<double, double> dest = make_pair(2.98, 0.55);
-	Dijkstra Pathplanner(dest, 100, 3, 2, 1, 1, 2, Coordinates);
+	pair<double, double> dest = make_pair(2,-0.9);
+	DijkstraPRM Pathplanner(dest, 800, 3, 2, 1, 1, 0.25, Coordinates);
 	double dist = Pathplanner.PathDistance;
 	//PRM map1(100, 3, 2, 1, 1, 2, Coordinates);
 	auto stop = high_resolution_clock::now();
